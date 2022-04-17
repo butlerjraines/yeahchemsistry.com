@@ -1,0 +1,4 @@
+# Ignore drupal core (if not versioning drupal sources)
+/vendor
+/web/core
+/web/modules/contrib7

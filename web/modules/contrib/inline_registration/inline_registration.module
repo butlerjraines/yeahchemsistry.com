@@ -1,0 +1,154 @@
+<?php
+
+use Drupal\Core\Form\FormState;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\node\Entity\NodeType;
+use Drupal\node\NodeTypeInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for \Drupal\node\NodeTypeForm.
+ *
+ * Adds Inline Registration settings to the node type form.
+ *
+ * @see NodeTypeForm::form()
+ * @see inline_registration_form_node_type_form_submit()
+ */
+function inline_registration_form_node_type_form_alter(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Form\FormObject $form_object */
+  $form_object = $form_state->getFormObject();
+  /** @var \Drupal\node\NodeTypeInterface $node_type */
+  $node_type = $form_object->getEntity();
+
+  $form['inline_registration'] = [
+    '#type' => 'details',
+    '#title' => new TranslatableMarkup('Inline registration'),
+    '#description' => new TranslatableMarkup('Setting for publishing this content from anonymous user, and automatically create account for this.'),
+    '#group' => 'additional_settings',
+  ];
+  $form['inline_registration']['enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => new TranslatableMarkup('Inline registration'),
+    '#default_value' => $node_type->getThirdPartySetting('inline_registration', 'enabled', FALSE),
+    '#description' => new TranslatableMarkup('Enable user creation from this content.'),
+  ];
+  $form['inline_registration']['weight'] = array(
+    '#type' => 'weight',
+    '#title' => new TranslatableMarkup('Weight of field'),
+    '#default_value' => $node_type->getThirdPartySetting('inline_registration', 'weight', -10),
+    '#description' => new TranslatableMarkup("Select weight for this field into content creation form."),
+    '#delta' => 50,
+  );
+
+  $form['#entity_builders'][] = 'inline_registration_form_node_type_form_builder';
+}
+
+/**
+ * Entity builder for the node type form with Inline Registration.
+ *
+ * @see inline_registration_form_node_type_form_alter()
+ */
+function inline_registration_form_node_type_form_builder($entity_type, NodeTypeInterface $node_type, &$form, FormStateInterface $form_state) {
+  $node_type->setThirdPartySetting('inline_registration', 'enabled', $form_state->getValue('enabled'));
+  $node_type->setThirdPartySetting('inline_registration', 'weight', $form_state->getValue('weight'));
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for \Drupal\node\NodeForm.
+ *
+ * Adds menu options to the node type form.
+ *
+ * @see NodeForm::form()
+ * @see inline_registration_form_node_form_validate()
+ * @see inline_registration_form_node_form_submit()
+ */
+function inline_registration_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var \Drupal\Core\Form\FormObject $form_object */
+  $form_object = $form_state->getFormObject();
+  /** @var \Drupal\node\Entity\Node $node */
+  $node = $form_object->getEntity();
+  $node_type = NodeType::load($node->bundle());
+
+  if (
+    \Drupal::currentUser()->isAnonymous()
+    && $node_type->getThirdPartySetting('inline_registration', 'enabled', FALSE)
+  ) {
+    // Create form object.
+    $user_form_object = \Drupal::entityTypeManager()->getFormObject('user', 'register');
+    $user_form_object->setEntity(User::create());
+
+    // Create form state.
+    $user_form_state = new FormState();
+    $user_form_state->setFormObject($user_form_object);
+    $form_state->set(['user_form_state'], $user_form_state);
+
+    // Embed the registration form.
+    $form['user'] = [
+      '#type' => 'fieldset',
+      '#title' => new TranslatableMarkup('Login or Register as a New User'),
+      '#description' => new TranslatableMarkup('You are not currently logged in. In order to post this item please @login or provide the following details to register.', ['@login' => Link::createFromRoute(new TranslatableMarkup('login now'), 'user.login')->toString()]),
+      '#collapsed' => FALSE,
+      '#collapsible' => FALSE,
+      '#weight' => $node_type->getThirdPartySetting('inline_registration', 'weight', -10),
+      'form' => $user_form_object->buildForm(['#parents' => ['user']], $user_form_state)
+    ];
+    $form['user']['form']['#type'] = 'container';
+    $form['user']['form']['#theme_wrappers'] = \Drupal::service('element_info')->getInfoProperty('container', '#theme_wrappers', []);
+    unset($form['user']['form']['form_token']);
+
+    // Remove submit buttons.
+    if (!empty($form['user']['form']['actions'])) {
+      if (isset($form['user']['form']['actions']['submit'])) {
+        $form['user']['form']['#submit'] = $form['user']['form']['actions']['submit']['#submit'];
+      }
+
+      unset($form['user']['form']['actions']);
+    }
+
+    // Make sure that registration submits are called before node submits.
+    array_unshift($form['#validate'], 'inline_registration_form_node_form_validate');
+    array_unshift($form['actions']['submit']['#submit'], 'inline_registration_form_node_form_submit');
+  }
+}
+
+/**
+ * Validate handler for the node form with Inline Registration.
+ *
+ * @see inline_registration_form_node_form_alter()
+ */
+function inline_registration_form_node_form_validate(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Form\FormStateInterface $user_form_state */
+  $user_form_state = $form_state->get(['user_form_state']);
+  $user_form_object = $user_form_state->getFormObject();
+
+  $user_form_state->setCompleteForm($form_state->getCompleteForm());
+  $user_form_state->setValues($form_state->getValues() ? : []);
+  $user_form_state->setUserInput($form_state->getUserInput() ? : []);
+  $user_form_object->validateForm($form['user']['form'], $user_form_state);
+  \Drupal::service('form_validator')->validateForm($user_form_object->getFormId(), $form['user']['form'], $user_form_state);
+
+  foreach ($user_form_state->getErrors() as $error_element_path => $error) {
+    $form_state->setErrorByName('user][' . $error_element_path, $error);
+  }
+}
+
+/**
+ * Submit handler for the node form with Inline Registration.
+ *
+ * @see inline_registration_form_node_form_alter()
+ */
+function inline_registration_form_node_form_submit(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Form\FormStateInterface $user_form_state */
+  $user_form_state = $form_state->get(['user_form_state']);
+
+  $user_form_state->setCompleteForm($form_state->getCompleteForm());
+  $user_form_state->setValues($form_state->getValues() ? : []);
+  $user_form_state->setUserInput($form_state->getUserInput() ? : []);
+  $user_form_state->setSubmitted();
+  \Drupal::service('form_submitter')->doSubmitForm($form['user']['form'], $user_form_state);
+
+  // Set author as current user and submit the node.
+  $form_state->setValue('uid', $user_form_state->getValue('uid'));
+}

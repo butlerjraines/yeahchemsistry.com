@@ -1,0 +1,11 @@
+type: module
+name: Inline Registration
+description: Allow anonymous users to register via the node/add page
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2021-08-07
+version: '1.0.0-alpha1'
+project: 'inline_registration'
+datestamp: 1628357317
