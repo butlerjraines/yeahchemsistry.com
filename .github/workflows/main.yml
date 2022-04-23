@@ -1,0 +1,61 @@
+name: Drupal
+#really
+on:
+ 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+env:
+  ## Sets environment variable
+  DIRECTORY: /home/butlerraines/yeahchemistry.com/public_html/
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.0'
+    - uses: actions/checkout@v2
+    - name: parent working directory
+      run: pwd
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+#    - name: Directory Permissions
+#     run: |
+#       chmod -R 777 storage bootstrap/cache
+# Runs a set of commands using the runners shell
+    - name: echo "Run a multi-line script:${{env.API_KEY}}"   
+      run: |
+        mkdir ../build
+        cp -TR . ../build
+        tar -cvf deploy.tar ../build/
+        pwd
+        ls -la
+      #env:
+      # DB_CONNECTION: sqlite
+      # DB_DATABASE: database/database.sqlite
+      #run: vendor/bin/phpunit
+    - name:  Copy Compose file to remote 
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: deploy.tar
+          remote: ${{env.DIRECTORY}}/deploy.tar
+          host: 64.227.31.168
+          username: 'butlerraines'
+          password: '@tVKYpRGqBx*'
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        #host: ${{ secrets.SERVER_IP }}
+        host: 64.227.31.168
+        username: 'butlerraines'
+        password: '@tVKYpRGqBx*'
+        port: 22
+        script: |
+                cd ${{env.DIRECTORY}}
+                #tar -xf main.tar.gz --strip-components=1
+                tar -xf deploy.tar --strip-components=1
+                rm deploy.tar
