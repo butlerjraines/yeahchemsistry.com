@@ -8,7 +8,7 @@ on:
     branches: [ main ]
 env:
   ## Sets environment variable
-  DIRECTORY: /home/butlerraines/yeahchemistry.com/public_html/
+  DIRECTORY: /home/butlerraines/yeahchemistry.com/
 jobs:
   laravel-tests:
 
