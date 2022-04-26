@@ -38,7 +38,7 @@
         "drupal/recaptcha_v3": "1.x-dev@dev",
         "drupal/redirect": "^1.6",
         "drupal/rename_admin_paths": "^2.0",
-        "drupal/simple_sitemap": "^3.3",
+        "drupal/simple_sitemap": "^4.1",
         "drupal/simplelogin": "^6.0",
         "drupal/smtp": "^1.0",
         "drupal/tara": "^2.3",
@@ -46,7 +46,6 @@
         "drupal/unmanaged_files": "^1.0",
         "drupal/uswds_base": "^2.2",
         "drupal/webform": "^6.0@alpha",
-        "drupal/xmlsitemap": "^1.2",
         "drush/drush": "*"
     },
     "conflict": {
