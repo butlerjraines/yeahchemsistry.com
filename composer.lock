@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41af4b61da269dba16956b9af884cbfe",
+    "content-hash": "d602b0b388fe1651087461f40f97b89d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2739,17 +2739,17 @@
         },
         {
             "name": "drupal/multiple_registration",
-            "version": "2.99.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/multiple_registration.git",
-                "reference": "8.x-2.99"
+                "reference": "3.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/multiple_registration-8.x-2.99.zip",
-                "reference": "8.x-2.99",
-                "shasum": "ddde2cb5e829055193f80c5ff3700ed29ea79379"
+                "url": "https://ftp.drupal.org/files/projects/multiple_registration-3.1.1.zip",
+                "reference": "3.1.1",
+                "shasum": "d2dde239f401eaceb42334a23fbd67da9ddfe704"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
@@ -2757,8 +2757,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.99",
-                    "datestamp": "1612039776",
+                    "version": "3.1.1",
+                    "datestamp": "1645374126",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

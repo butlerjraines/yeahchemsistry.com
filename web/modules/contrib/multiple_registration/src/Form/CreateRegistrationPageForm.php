@@ -117,6 +117,13 @@ class CreateRegistrationPageForm extends ConfigFormBase {
       '#default_value' => $config->get('multiple_registration_path_' . $rid),
     ];
 
+    $form['multiple_registration_redirect_path_' . $rid] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Redirect path'),
+      '#description' => $this->t('Path where the user should be redirected to after submitting the registration form.'),
+      '#default_value' => $config->get('multiple_registration_redirect_path_' . $rid),
+    ];
+
     $form_modes = $this->entityDisplayRepository->getFormModes('user');
     $form_modes_options = ['default' => $this->t('Default')];
     foreach ($form_modes as $key => $form_mode) {
@@ -166,21 +173,40 @@ class CreateRegistrationPageForm extends ConfigFormBase {
     parent::submitForm($form, $form_state);
     $rid = $form_state->getValue('rid');
     $source = $form_state->getValue('multiple_registration_url_' . $rid);
-    $alias = $form_state->getValue('multiple_registration_path_' . $rid);
+    $alias = $this->addLeadingSlash($form_state->getValue('multiple_registration_path_' . $rid));
+    $redirectPath = $this->addLeadingSlash($form_state->getValue('multiple_registration_redirect_path_' . $rid));
     $isHidden = $form_state->getValue('multiple_registration_hidden_' . $rid);
     $formModeRegister = $form_state->getValue('multiple_registration_form_mode_register_' . $rid);
     $formModeEdit = $form_state->getValue('multiple_registration_form_mode_edit_' . $rid);
     $this->config('multiple_registration.create_registration_page_form_config')
       ->set('multiple_registration_path_' . $rid, $alias)
       ->set('multiple_registration_url_' . $rid, $source)
+      ->set('multiple_registration_redirect_path_' . $rid, $redirectPath)
       ->set('multiple_registration_hidden_' . $rid, $isHidden)
       ->set('multiple_registration_form_mode_register_' . $rid, $formModeRegister)
       ->set('multiple_registration_form_mode_edit_' . $rid, $formModeEdit)
       ->save();
-    $this->multipleRegistrationController->addRegisterPageAlias($source, '/' . $alias);
+    $this->multipleRegistrationController->addRegisterPageAlias($source, $alias);
     $this->routeBuilder->rebuild();
     $this->cacheRender->invalidateAll();
     $form_state->setRedirect('multiple_registration.multiple_registration_list_index');
+  }
+
+  /**
+   * Add leading slash to path strings.
+   *
+   * @param string $string
+   *   Input path string.
+   *
+   * @return string
+   *   Returns updated path string.
+   */
+  private function addLeadingSlash(string $string): string {
+    if ($string && substr($string, 0, 1) != '/') {
+      return '/' . $string;
+    }
+
+    return $string;
   }
 
 }

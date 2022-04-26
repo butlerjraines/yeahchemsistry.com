@@ -87,10 +87,12 @@ class AvailableUserRolesService {
       $reg_pages = [];
       foreach ($roles as $rid => $role_name) {
         if ($url = $pages_config->get('multiple_registration_url_' . $rid)) {
+          $redirectPath = $pages_config->get('multiple_registration_redirect_path_' . $rid);
           $isHidden = $pages_config->get('multiple_registration_hidden_' . $rid);
           $formModeRegister = $pages_config->get('multiple_registration_form_mode_register_' . $rid) ?: 'register';
           $formModeEdit = $pages_config->get('multiple_registration_form_mode_edit_' . $rid) ?: 'default';
           $reg_pages[$rid]['url'] = $url;
+          $reg_pages[$rid]['redirect'] = $redirectPath;
           $reg_pages[$rid]['role_name'] = $role_name;
           $reg_pages[$rid]['hidden'] = $isHidden;
           $reg_pages[$rid]['form_mode_register'] = $formModeRegister;

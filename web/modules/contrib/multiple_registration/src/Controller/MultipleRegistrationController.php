@@ -118,9 +118,9 @@ class MultipleRegistrationController extends ControllerBase {
     $registerAccessCheck = new RegisterAccessCheck();
     $clear_roles_list = [];
     $page_access_config = $this->config('multiple_registration.access_settings_page_form_config');
-    $page_access_roles_whitelist = $page_access_config->get('multiple_registration_pages_white_list');
-    if (is_array($page_access_roles_whitelist)) {
-      foreach ($page_access_roles_whitelist as $role) {
+    $page_access_roles_allowed_list = $page_access_config->get('multiple_registration_pages_allowed_list');
+    if (is_array($page_access_roles_allowed_list)) {
+      foreach ($page_access_roles_allowed_list as $role) {
         if (!empty($role)) {
           $clear_roles_list[] = $role;
         }
@@ -130,7 +130,7 @@ class MultipleRegistrationController extends ControllerBase {
     if ($account->isAuthenticated()) {
       return AccessResult::allowed();
     }
-    // Disabling non-whitelisted roles registration pages.
+    // Disabling non-allowed roles registration pages.
     $rid = $this->routeMatch->getParameter('rid');
     if ($rid !== NULL && !\in_array($rid, $clear_roles_list, TRUE)) {
       return AccessResult::forbidden();
@@ -182,6 +182,13 @@ class MultipleRegistrationController extends ControllerBase {
         $path_alias = $this->aliasManager->getAliasByPath($role['url']);
         $row[] = $path_alias;
 
+        if ($role['redirect']) {
+          $row[] = $role['redirect'];
+        }
+        else {
+          $row[] = $this->t('- None -');
+        }
+
         if ($role['hidden'] === 1) {
           $isHiddenLabel = $this->t('Yes');
         }
@@ -229,6 +236,7 @@ class MultipleRegistrationController extends ControllerBase {
       $header = [
         $this->t('Role'),
         $this->t('Registration page path'),
+        $this->t('Redirect path'),
         $this->t('Hidden'),
         $this->t('Register form mode'),
         $this->t('Edit form mode'),
@@ -314,8 +322,8 @@ class MultipleRegistrationController extends ControllerBase {
     $source = $pages_config->get('multiple_registration_url_' . $rid);
     $path_alias_storage = $this->entityTypeManager()->getStorage('path_alias');
     $entities = $path_alias_storage->loadByProperties([
-       'path' => $source,
-       'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+      'path' => $source,
+      'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
     ]);
     $path_alias_storage->delete($entities);
   }
@@ -358,6 +366,7 @@ class MultipleRegistrationController extends ControllerBase {
 
       // Default registration.
       case 'user.register':
+      case 'user.admin_create':
         $roles = [self::MULTIPLE_REGISTRATION_GENERAL_REGISTRATION_ID];
         break;
 

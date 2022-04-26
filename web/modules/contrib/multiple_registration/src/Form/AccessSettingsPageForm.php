@@ -92,20 +92,20 @@ class AccessSettingsPageForm extends ConfigFormBase {
 
     $config = $this->config('multiple_registration.access_settings_page_form_config');
 
-    $form['multiple_registration_pages_white_list'] = [
+    $form['multiple_registration_pages_allowed_list'] = [
       '#type' => 'checkboxes',
-      '#title' => $this->t('Multiple registration pages whitelist'),
+      '#title' => $this->t('Multiple registration allowed pages.'),
       '#description' => $this->t('Select multiple registration pages which will be accessible to anonymous user.'),
-      '#default_value' => $config->get('multiple_registration_pages_white_list'),
+      '#default_value' => $config->get('multiple_registration_pages_allowed_list'),
       '#options' => user_role_names(),
     ];
 
-    // Hide authenticated and anonymous roles from the whitelist form to prevent
-    // registration exceptions with service roles.
-    $form['multiple_registration_pages_white_list']['anonymous'] = [
+    // Hide authenticated and anonymous roles from the allowed pages form to
+    // prevent registration exceptions with service roles.
+    $form['multiple_registration_pages_allowed_list']['anonymous'] = [
       '#access' => FALSE,
     ];
-    $form['multiple_registration_pages_white_list']['authenticated'] = [
+    $form['multiple_registration_pages_allowed_list']['authenticated'] = [
       '#access' => FALSE,
     ];
 
@@ -136,12 +136,12 @@ class AccessSettingsPageForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $white_list = $form_state->getValue('multiple_registration_pages_white_list');
+    $allowed_list = $form_state->getValue('multiple_registration_pages_allowed_list');
     $clicked_button = end($form_state->getTriggeringElement()['#parents']);
     switch ($clicked_button) {
       case 'save':
         $this->config('multiple_registration.access_settings_page_form_config')
-          ->set('multiple_registration_pages_white_list', $white_list)
+          ->set('multiple_registration_pages_allowed_list', $allowed_list)
           ->save();
         $this->routeBuilder->rebuild();
         $this->cacheRender->invalidateAll();

@@ -36,7 +36,7 @@
         "drupal/menu_item_role_access": "^2.0",
         "drupal/metatag": "^1.14",
         "drupal/module_missing_message_fixer": "^2.0",
-        "drupal/multiple_registration": "^2.89",
+        "drupal/multiple_registration": "^3.1",
         "drupal/pathauto": "^1.10",
         "drupal/recaptcha": "^3.0",
         "drupal/recaptcha_v3": "1.x-dev@dev",
