@@ -33,7 +33,7 @@
         "drupal/metatag": "^1.14",
         "drupal/module_missing_message_fixer": "^2.0",
         "drupal/multiple_registration": "^2.89",
-        "drupal/pathauto": "^1.8",
+        "drupal/pathauto": "^1.10",
         "drupal/recaptcha": "^3.0",
         "drupal/recaptcha_v3": "1.x-dev@dev",
         "drupal/redirect": "^1.6",
