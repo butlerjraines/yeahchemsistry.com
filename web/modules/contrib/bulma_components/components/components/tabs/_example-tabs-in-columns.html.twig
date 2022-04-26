@@ -1,0 +1,28 @@
+{%
+  set columns = [
+    {
+      size: 12,
+      templates: [
+        {
+          template: '@bulma_components/components/tabs/_example-tabs.html.twig',
+          variables: _context
+        },
+        {
+          template: '@bulma_components/components/tabs/_example-tabs-alignment-right.html.twig',
+          variables: _context
+        },
+        {
+          template: '@bulma_components/components/tabs/_example-tabs-alignment-centered-with-icons.html.twig',
+          variables: _context
+        },
+      ]
+    },
+  ]
+%}
+{% embed '@bulma_components/columns/columns/columns.html.twig' with
+  {
+    is_multiline: true,
+    columns: columns,
+  } only
+%}
+{% endembed %}

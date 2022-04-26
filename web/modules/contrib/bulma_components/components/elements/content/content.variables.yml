@@ -1,0 +1,19 @@
+attributes:
+  type: bulma_attributes
+tag:
+  type: bulma_tag
+size:
+  type: bulma_size
+  description: 'Change the text size'
+  nullable: true
+  documentation_url: https://bulma.io/documentation/elements/content/#sizes
+content:
+  label: 'Content'
+  description: 'Content to add to the container'
+  nullable: true
+  type: text
+  preview:
+    '#type': 'markup'
+    '#markup': '<h2>Sample</h2>'
+templates:
+  type: bulma_templates

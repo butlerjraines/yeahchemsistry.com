@@ -1,0 +1,30 @@
+services:
+  component_schema.processor:
+    class: Drupal\component_schema\ComponentProcessor
+    arguments: ['@module_handler', '@theme_handler', '@string_translation']
+  component_schema.twig_extension:
+    class: Drupal\component_schema\Template\ComponentTwigExtension
+    arguments: ['@renderer', '@component_schema.typed']
+    tags:
+      - { name: twig.extension }
+  component_schema.storage.schema_provided:
+    class: Drupal\Core\Config\ExtensionInstallStorage
+    arguments: ['@config.storage', 'component/schema', '', true, '%install_profile%']
+  component_schema.storage.schema:
+    class:  Drupal\Core\Config\ManagedStorage
+    arguments: ['@component_schema.storage.manager']
+  component_schema.storage.template:
+    class:  Drupal\Core\Config\MemoryStorage
+  component_schema.storage.manager:
+    class: Drupal\component_schema\Component\ComponentStorageManager
+    arguments: ['@component_schema.storage.schema_provided', '@event_dispatcher', '@lock', '@component_schema.processor']
+    public: false
+  component_schema.typed:
+    class: Drupal\component_schema\Component\TypedComponentManager
+    arguments: ['@component_schema.storage.template', '@component_schema.storage.schema', '@cache.discovery', '@module_handler', '@class_resolver']
+    tags:
+      - { name: plugin_manager_cache_clear }
+    calls:
+      - [setValidationConstraintManager, ['@validation.constraint']]
+      - [setTwigEnvironment, ['@twig']]
+      - [handleTwigDebug]

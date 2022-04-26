@@ -1,0 +1,16 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_image' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+<figure{{ attributes }}>
+  {% block image %}
+  <img{{ img_attributes }}/>
+  {% endblock image %}
+  {% block caption %}
+  {% if caption %}
+  <figcaption{{ caption_attributes }}>
+    {{ caption }}
+  </figcaption>
+  {% endif %}
+  {% endblock caption %}
+</figure>

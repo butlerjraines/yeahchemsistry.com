@@ -1,0 +1,10 @@
+{% set component_type = 'bulma_breadcrumb' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+<nav{{ attributes }}>
+  {%- if not (links is empty) -%}
+    {{ include('@bulma_components/components/links/links.html.twig', {
+      links: links
+    }, with_context = false) }}
+  {%- endif -%}
+</nav>

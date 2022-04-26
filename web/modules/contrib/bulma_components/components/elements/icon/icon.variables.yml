@@ -1,0 +1,28 @@
+tag:
+  type: bulma_tag
+  default: 'span'
+attributes:
+  type: bulma_attributes
+icon_attributes:
+  type: bulma_attributes
+  label: 'Icon attributes'
+size:
+  type: bulma_size
+  documentation_url: https://bulma.io/documentation/elements/icon/#sizes
+text_color:
+  type: bulma_text_color
+  preview: 'has-text-info'
+icon_set:
+  label: 'Icon set'
+  description: 'The icon set, such as fas'
+  type: string_attribute_provider
+  provides_class: true
+  attribute_target: 'icon_attributes'
+  preview: 'fas'
+icon:
+  label: 'Icon'
+  description: 'The icon, such as check-square'
+  type: string_attribute_provider
+  provides_class: true
+  attribute_target: 'icon_attributes'
+  preview: 'fa-info-circle'

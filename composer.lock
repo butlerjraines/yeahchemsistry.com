@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12b3926c0808a39e13b5df4332d6e72d",
+    "content-hash": "4178ac08171b19e9a6a6170933cac0a9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1374,6 +1374,52 @@
             }
         },
         {
+            "name": "drupal/bulma_components",
+            "version": "1.0.0-alpha6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/bulma_components.git",
+                "reference": "1.0.0-alpha6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/bulma_components-1.0.0-alpha6.zip",
+                "reference": "1.0.0-alpha6",
+                "shasum": "f331bc58fd87a2a0d84593a231047270b6be0694"
+            },
+            "require": {
+                "drupal/component_schema": "*",
+                "drupal/components": "*",
+                "drupal/core": "^8.8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha6",
+                    "datestamp": "1614282702",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "nedjo",
+                    "homepage": "https://www.drupal.org/user/4481"
+                }
+            ],
+            "description": "Provides a set of components to be used when theming with the Bulma CSS framework.",
+            "homepage": "https://www.drupal.org/project/bulma_components",
+            "support": {
+                "source": "https://git.drupalcode.org/project/bulma_components"
+            }
+        },
+        {
             "name": "drupal/captcha",
             "version": "dev-1.x",
             "source": {
@@ -1438,6 +1484,103 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/captcha",
                 "issues": "https://www.drupal.org/project/issues/captcha"
+            }
+        },
+        {
+            "name": "drupal/component_schema",
+            "version": "1.0.0-alpha6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/component_schema.git",
+                "reference": "1.0.0-alpha6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/component_schema-1.0.0-alpha6.zip",
+                "reference": "1.0.0-alpha6",
+                "shasum": "5d0a700aec4d0b5b16c32d9a6f2d0c858337a38c"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "require-dev": {
+                "drupal/ui_patterns": "*",
+                "drupal/ui_patterns_settings": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha6",
+                    "datestamp": "1614282845",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "nedjo",
+                    "homepage": "https://www.drupal.org/user/4481"
+                }
+            ],
+            "description": "Provides schema support for components, including styleguide integration via the Styleguide module.",
+            "homepage": "https://www.drupal.org/project/component_schema",
+            "support": {
+                "source": "https://git.drupalcode.org/project/component_schema"
+            }
+        },
+        {
+            "name": "drupal/components",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/components.git",
+                "reference": "8.x-2.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/components-8.x-2.4.zip",
+                "reference": "8.x-2.4",
+                "shasum": "9b083c2f845ff2e1a1632efcf24f88cecd7479cc"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.4",
+                    "datestamp": "1618861606",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "JohnAlbin",
+                    "homepage": "https://www.drupal.org/user/32095",
+                    "email": "virtually.johnalbin@gmail.com"
+                },
+                {
+                    "name": "RobLoach",
+                    "homepage": "https://www.drupal.org/user/61114"
+                }
+            ],
+            "description": "Registers folders of components defined by your theme or module as Twig namespaces",
+            "homepage": "https://drupal.org/project/components",
+            "support": {
+                "source": "https://git.drupalcode.org/project/components"
             }
         },
         {
@@ -8379,7 +8522,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "drupal/bulma": 5,
+        "drupal/bulma_components": 15,
         "drupal/captcha": 20,
+        "drupal/component_schema": 15,
         "drupal/inline_registration": 15,
         "drupal/linkchecker": 10,
         "drupal/recaptcha_v3": 20,

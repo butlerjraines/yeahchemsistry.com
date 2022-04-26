@@ -1,0 +1,27 @@
+{%
+  set columns = [
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/box/_example-box.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/box/_example-box-with-button.html.twig'
+        },
+      ]
+    },
+  ]
+%}
+{% embed '@bulma_components/columns/columns/columns.html.twig' with
+  {
+    is_multiline: true,
+    columns: columns,
+  } only
+%}
+{% endembed %}

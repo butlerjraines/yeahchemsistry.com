@@ -1,0 +1,60 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_card' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+<{{ tag }}{{ attributes }}>
+  {% block card_header %}
+  {% if card_header %}
+  <header class="card-header">
+    {% block card_header_title %}
+    {% if card_header.title %}
+    <p class="card-header-title">
+      {{ card_header.title }}
+    </p>
+    {% endif %}
+    {% endblock card_header_title %}
+    {% block card_header_icon %}
+    {% if card_header.icon %}
+      {%- if card_header.icon.url -%}
+    <a href="{{ card_header.icon.url }}" class="card-header-icon">
+      {%- else -%}
+    <span class="card-header-icon">
+      {%- endif -%}
+      {{ include('@bulma_components/elements/icon/icon.html.twig', card_header.icon.icon, with_context = false) }}
+      {%- if card_header.icon.url -%}
+    </a>
+      {%- else -%}
+    </span>
+      {%- endif -%}
+    {% endif %}
+    {% endblock card_header_icon %}
+  </header>
+  {% endif %}
+  {% endblock card_header %}
+  {% block card_image %}
+  {% if card_image %}
+  <div class="card-image">
+    {{ include('@bulma_components/elements/image/image.html.twig', card_image, with_context = false) }}
+  </div>
+  {% endif %}
+  {% endblock card_image %}
+  {% block card_content %}
+  {% if card_content %}
+  <div class="card-content">
+    {{ include('@bulma_components/elements/title/title.html.twig', card_content.title) }}
+    {{ card_content.content }}
+  </div>
+  {% endif %}
+  {% endblock card_content %}
+  {% block card_footer %}
+  {% if card_footer %}
+  <footer class="card-footer">
+    {% block card_footer_items %}
+    {% for item in card_footer.items %}
+    <a href="{{ item.url }}" class="card-footer-item">{{ item.label }}</a>
+    {% endfor %}
+    {% endblock card_footer_items %}
+  </footer>
+  {% endif %}
+  {% endblock card_footer %}
+</{{ tag }}>

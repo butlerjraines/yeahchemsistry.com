@@ -1,0 +1,8 @@
+attributes:
+  type: bulma_attributes
+tag:
+  type: bulma_tag
+  default: 'button'
+size:
+  type: bulma_size
+  documentation_url: https://bulma.io/documentation/elements/delete/#sizes

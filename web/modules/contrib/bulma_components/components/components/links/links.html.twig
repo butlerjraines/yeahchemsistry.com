@@ -1,0 +1,21 @@
+{% set component_type = 'bulma_links' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{%- if not (links is empty) -%}
+<ul>
+{%- for link in links -%}
+  <li{{ link.attributes }}>
+  {%- if link.url -%}
+    <a href="{{ link.url }}">
+  {%- endif -%}
+    {%- if link.icon -%}
+      {{ include('@bulma_components/elements/icon/icon.html.twig', link.icon, with_context = false) }}
+    {%- endif -%}
+    {{ link.text }}
+  {%- if link.url -%}
+    </a>
+  {%- endif -%}
+  </li>
+{%- endfor -%}
+</ul>
+{%- endif -%}

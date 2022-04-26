@@ -1,0 +1,269 @@
+# Provides integration with the component_styleguide module.
+
+# Settings used in cases including breakpoint application.
+settings:
+  # Breakpoints supported, from smallest to largest.
+  breakpoints:
+    - mobile
+    - tablet
+    - desktop
+    - widescreen
+    - fullhd
+  # The pattern that breakpoint-supporting values take, where value is the
+  # original value and breakpoint is the name of the breakpoint.
+  breakpoint_pattern: 'value-breakpoint'
+  # A sample value of a variable that supports multiple breakpoints.
+  breakpoint_pattern_example: 'is-3-desktop'
+  # A class to wrap the elements that should be styled as content, such as a
+  # <details> element that presents component information.
+  content_class: content
+# Variables to add to all components
+global_variables:
+  background_color:
+    label: 'Background color'
+    description: 'Set background to one of a range of colors'
+    nullable: true
+    type: string_attribute_provider
+    options:
+      has-background-white: white
+      has-background-black: black
+      has-background-light: light
+      has-background-dark: dark
+      has-background-primary: primary
+      has-background-info: info
+      has-background-link: link
+      has-background-success: success
+      has-background-warning: warning
+      has-background-danger: danger
+      has-background-black-bis: black-bis
+      has-background-black-ter: black-ter
+      has-background-grey-darker: grey-darker
+      has-background-grey-dark: grey-dark
+      has-background-grey: grey
+      has-background-grey-light: grey-light
+      has-background-grey-lighter: grey-lighter
+      has-background-white-ter: white-ter
+      has-background-white-bis: white-bis
+      has-background-primary-light: primary-light
+      has-background-link-light: link-light
+      has-background-info-light: info-light
+      has-background-success-light: success-light
+      has-background-warning-light: warning-light
+      has-background-danger-light: danger-light
+      has-background-primary-dark: primary-dark
+      has-background-link-dark: link-dark
+      has-background-info-dark: info-dark
+      has-background-success-dark: success-dark
+      has-background-warning-dark: warning-dark
+      has-background-danger-dark: danger-dark
+    provides_class: true
+    documentation_url: https://bulma.io/documentation/helpers/color-helpers/#background-color
+# The components provided by this module.
+components:
+  # columns
+  bulma_columns:
+    label: 'Columns'
+    description: 'The power of Flexbox in a simple interface'
+    styleguide_template: '@bulma_components/columns/columns/_example-columns-stacked.html.twig'
+    component_template: '@bulma_components/columns/columns/columns.html.twig'
+    variables_yml: components/columns/columns/columns.variables.yml
+    group: 'Bulma - Columns'
+    documentation_url: https://bulma.io/documentation/columns
+    html_class: 'columns'
+    takes_ui: false
+  bulma_one_column:
+    label: 'One column'
+    description: 'A single-column component'
+    styleguide_template: '@bulma_components/columns/one_column/_example-one_column.html.twig'
+    component_template: '@bulma_components/columns/one_column/one_column.html.twig'
+    variables_yml: components/columns/one_column/one_column.variables.yml
+    group: 'Bulma - Columns'
+    documentation_url: https://bulma.io/documentation/columns
+    takes_ui: true
+  # elements
+  bulma_box:
+    label: 'Box'
+    description: 'A white box to contain other elements'
+    styleguide_template: '@bulma_components/elements/box/_example-boxes-in-columns.html.twig'
+    component_template: '@bulma_components/elements/box/box.html.twig'
+    variables_yml: components/elements/box/box.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/box
+    html_class: 'box'
+    takes_ui: true
+  bulma_block:
+    label: 'Block'
+    description: 'A simple spacer tool that allows sibling HTML elements to have a consistent margin between them'
+    styleguide_template: '@bulma_components/elements/block/_example-blocks.html.twig'
+    component_template: '@bulma_components/elements/block/block.html.twig'
+    variables_yml: components/elements/block/block.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/block
+    html_class: 'block'
+    takes_ui: true
+  bulma_button:
+    label: 'Button'
+    description: 'The classic button, in different colors, sizes, and states'
+    styleguide_template: '@bulma_components/elements/button/_example-buttons-in-columns.html.twig'
+    component_template: '@bulma_components/elements/button/button.html.twig'
+    variables_yml: components/elements/button/button.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/button
+    html_class: 'button'
+    takes_ui: true
+  bulma_buttons:
+    label: 'Buttons'
+    description: 'A list of buttons'
+    styleguide_template: '@bulma_components/elements/buttons/_example-buttons-in-columns.html.twig'
+    component_template: '@bulma_components/elements/buttons/buttons.html.twig'
+    variables_yml: components/elements/buttons/buttons.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/button/#list-of-buttons
+    html_class: 'buttons'
+    takes_ui: false
+  bulma_delete:
+    label: 'Delete'
+    description: 'A versatile delete cross'
+    styleguide_template: '@bulma_components/elements/delete/_example-deletes-in-columns.html.twig'
+    component_template: '@bulma_components/elements/delete/delete.html.twig'
+    variables_yml: components/elements/delete/delete.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/delete
+    html_class: 'delete'
+    takes_ui: true
+  bulma_icon:
+    label: 'Icon'
+    description: 'Bulma is compatible with all icon font libraries: Font Awesome 5, Font Awesome 4, Material Design Icons, Ionicons, etc.'
+    styleguide_template: '@bulma_components/elements/icon/_example-icons-in-columns.html.twig'
+    component_template: '@bulma_components/elements/icon/icon.html.twig'
+    variables_yml: components/elements/icon/icon.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/icon
+    html_class: 'icon'
+    takes_ui: true
+  bulma_image:
+    label: 'Image'
+    description: 'A container for responsive images'
+    styleguide_template: '@bulma_components/elements/image/_example-images-in-columns.html.twig'
+    component_template: '@bulma_components/elements/image/image.html.twig'
+    variables_yml: components/elements/image/image.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/image
+    html_class: 'image'
+    takes_ui: true
+  bulma_links:
+    label: 'Links'
+    description: 'Links '
+    styleguide_template: '@bulma_components/components/links/_example-links.html.twig'
+    component_template: '@bulma_components/components/links/links.html.twig'
+    variables_yml: components/components/links/links.variables.yml
+    group: 'Bulma - Components'
+    documentation_url: https://bulma.io/documentation/components/breadcrumb
+    takes_ui: true
+  bulma_notification:
+    label: 'Notification'
+    description: 'Bold notification blocks, to alert your users of something'
+    styleguide_template: '@bulma_components/elements/notification/_example-notifications-in-columns.html.twig'
+    component_template: '@bulma_components/elements/notification/notification.html.twig'
+    variables_yml: components/elements/notification/notification.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/notification
+    html_class: 'notification'
+    takes_ui: true
+  bulma_title:
+    label: 'Title'
+    description: 'Simple headings to add depth to your page'
+    styleguide_template: '@bulma_components/elements/title/_example-titles-in-columns.html.twig'
+    component_template: '@bulma_components/elements/title/title.html.twig'
+    variables_yml: components/elements/title/title.variables.yml
+    group: 'Bulma - Elements'
+    documentation_url: https://bulma.io/documentation/elements/title
+    takes_ui: true
+  # components
+  bulma_breadcrumb:
+    label: 'Breadcrumb'
+    description: 'A simple breadcrumb component to improve your navigation experience'
+    styleguide_template: '@bulma_components/components/breadcrumb/_example-breadcrumbs.html.twig'
+    component_template: '@bulma_components/components/breadcrumb/breadcrumb.html.twig'
+    variables_yml: components/components/breadcrumb/breadcrumb.variables.yml
+    group: 'Bulma - Components'
+    documentation_url: https://bulma.io/documentation/components/breadcrumb
+    html_class: 'breadcrumb'
+    takes_ui: true
+  bulma_card:
+    label: 'Card'
+    description: 'An all-around flexible and composable component'
+    styleguide_template: '@bulma_components/components/card/_example-cards-in-columns.html.twig'
+    component_template: '@bulma_components/components/card/card.html.twig'
+    variables_yml: components/components/card/card.variables.yml
+    group: 'Bulma - Components'
+    documentation_url: https://bulma.io/documentation/components/card
+    html_class: 'card'
+    takes_ui: true
+  bulma_tabs:
+    label: 'Tabs'
+    description: 'Simple responsive horizontal navigation tabs, with different styles '
+    styleguide_template: '@bulma_components/components/tabs/_example-tabs-in-columns.html.twig'
+    component_template: '@bulma_components/components/tabs/tabs.html.twig'
+    variables_yml: components/components/tabs/tabs.variables.yml
+    group: 'Bulma - Components'
+    documentation_url: https://bulma.io/documentation/components/tabs
+    html_class: 'tabs'
+    inherits_from:
+      - bulma_helpers
+    takes_ui: true
+  # layouts
+  bulma_container:
+    label: 'Container'
+    description: 'An all-around flexible and composable component'
+    styleguide_template: '@bulma_components/layout/container/_example-containers.html.twig'
+    component_template: '@bulma_components/layout/container/container.html.twig'
+    variables_yml: components/layout/container/container.variables.yml
+    group: 'Bulma - Layout'
+    documentation_url: https://bulma.io/documentation/layout/container
+    html_class: 'container'
+    takes_ui: true
+  bulma_hero:
+    label: 'Hero'
+    description: 'An imposing hero banner to showcase something'
+    styleguide_template: '@bulma_components/layout/hero/_example-heros.html.twig'
+    component_template: '@bulma_components/layout/hero/hero.html.twig'
+    variables_yml: components/layout/hero/hero.variables.yml
+    group: 'Bulma - Layout'
+    documentation_url: https://bulma.io/documentation/layout/hero
+    html_class: 'hero'
+    inherits_from:
+      - bulma_helpers
+    takes_ui: true
+  bulma_level:
+    label: 'Level'
+    description: 'A multi-purpose horizontal level, which can contain almost any other element'
+    styleguide_template: '@bulma_components/layout/level/_example-levels.html.twig'
+    component_template: '@bulma_components/layout/level/level.html.twig'
+    variables_yml: components/layout/level/level.variables.yml
+    group: 'Bulma - Layout'
+    documentation_url: https://bulma.io/documentation/layout/level
+    html_class: 'level'
+    takes_ui: true
+  # helpers
+  # All helpers
+  bulma_helpers:
+    label: 'Helpers'
+    description: 'Apply helper classes to almost any element, in order to alter their style'
+    component_template: '@bulma_components/helpers/helpers/helpers.html.twig'
+    variables_yml: components/helpers/helpers/helpers.variables.yml
+    group: 'Bulma - Helpers'
+    documentation_url: https://bulma.io/documentation/helpers
+    inherits_from:
+      - bulma_typography
+    takes_ui: true
+  # typography
+  bulma_typography:
+    label: 'Typography'
+    description: 'Change the size and color of the typography for one or multiple viewport width'
+    styleguide_template: '@bulma_components/helpers/typography/_example-typographies-in-columns.html.twig'
+    component_template: '@bulma_components/helpers/typography/typography.html.twig'
+    variables_yml: components/helpers/typography/typography.variables.yml
+    group: 'Bulma - Helpers'
+    documentation_url: https://bulma.io/documentation/helpers/typography-helpers
+    takes_ui: false

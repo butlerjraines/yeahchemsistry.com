@@ -1,0 +1,13 @@
+{%
+  set content = {
+    'size': 'is-small',
+    'templates': [
+      {
+        'template': '@bulma_components/elements/content/_content-sample.html.twig',
+      },
+    ]
+  }
+%}
+{% embed '@bulma_components/elements/content/content.html.twig' with content only
+%}
+{% endembed %}

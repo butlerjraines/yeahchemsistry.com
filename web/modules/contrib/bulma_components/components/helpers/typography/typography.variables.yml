@@ -1,0 +1,25 @@
+attributes:
+  type: bulma_attributes
+  is_inheritable: false
+tag:
+  type: bulma_tag
+  default: 'span'
+  is_inheritable: false
+content:
+  label: 'Content'
+  description: 'Content to add to the container'
+  nullable: true
+  type: text
+  is_inheritable: false
+text_size:
+  type: bulma_text_size
+text_color:
+  type: bulma_text_color
+text_alignment:
+  type: bulma_text_alignment
+text_transformation:
+  type: bulma_text_transformation
+text_weight:
+  type: bulma_text_weight
+font_family:
+  type: bulma_font_family

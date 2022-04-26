@@ -1,0 +1,12 @@
+{%
+  set button = {
+    button_label: 'My button',
+    is_rounded: true,
+    left_icon: {
+      'icon_set': 'fas',
+      'icon': 'fa-book-open',
+      'text_color': 'has-text-info'
+    },
+  }
+%}
+{{ include('@bulma_components/elements/button/button.html.twig', button) }}

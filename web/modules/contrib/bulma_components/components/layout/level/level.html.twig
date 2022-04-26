@@ -1,0 +1,43 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_level' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{#
+  Macro to render level items.
+#}
+{% macro items(items) %}
+  {% for item in items %}
+  <div class="level-item">
+    {{ item.content }}
+    {% for template in item.templates %}
+      {{ template|raw }}
+    {% endfor %}
+  </div>
+  {% endfor %}
+{% endmacro %}
+{% import _self as level %}
+<nav{{ attributes }}>
+  {% block items %}
+  {% if items %}
+    {{ level.items(items) }}
+  {% endif %}
+  {% endblock items %}
+  {% block level_left %}
+  {% if level_left %}
+  <div class="level-left">
+    {% block level_left_items %}
+    {{ level.items(level_left) }}
+    {% endblock level_left_items %}
+  </div>
+  {% endif %}
+  {% endblock level_left %}
+  {% block level_right %}
+  {% if level_right %}
+  <div class="level-right">
+    {% block level_right_items %}
+    {{ level.items(level_right) }}
+    {% endblock level_right_items %}
+  </div>
+  {% endif %}
+  {% endblock level_right %}
+</nav>

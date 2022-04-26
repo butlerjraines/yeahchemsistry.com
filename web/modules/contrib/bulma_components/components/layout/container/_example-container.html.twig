@@ -1,0 +1,7 @@
+{%
+  set container = {
+    attributes: create_attribute(),
+    content: 'A regular container'
+  }
+%}
+{{ include('@bulma_components/layout/container/container.html.twig', container) }}

@@ -1,0 +1,9 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_typography' %}
+{% set errors = process_component() %}
+{{ helpers.errors(errors) }}
+<{{ tag }}{{ attributes }}>
+  {% block content %}
+  {{ content }}
+  {% endblock content %}
+</{{ tag }}>

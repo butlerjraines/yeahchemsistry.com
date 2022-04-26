@@ -1,0 +1,41 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_icon' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{%
+  set mdi_icons = {
+    sizes: {
+      default: 'mdi-24px',
+      'is-small': null,
+      'is-medium': 'mdi-36px',
+      'is-large': 'mdi-48px'
+    },
+  }
+%}
+{%
+  set fa_icons = {
+    sizes: {
+      default: 'fa-lg',
+      'is-small': null,
+      'is-medium': 'fa-2x',
+      'is-large': 'fa-3x'
+    },
+  }
+%}
+{%
+  set icons = {
+    mdi: mdi_icons,
+    fa: fa_icons,
+    fas: fa_icons,
+    far: fa_icons,
+    fad: fa_icons,
+    fab: fa_icons,
+    fal: fa_icons
+  }
+%}
+{% if icon_set is not empty and icons[icon_set].sizes[size] is not empty %}
+  {% set icon_attributes = icon_attributes.addClass(icons[icon_set].sizes[size]) %}
+{% endif %}
+<{{ tag }}{{ attributes }}>
+  <i{{ icon_attributes }}></i>
+</{{ tag }}>

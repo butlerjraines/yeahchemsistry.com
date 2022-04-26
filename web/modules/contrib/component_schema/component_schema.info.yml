@@ -1,0 +1,10 @@
+name: Component Schema
+type: module
+description: Provides schema support for components, including styleguide integration via the Styleguide module.
+core_version_requirement: ^8.8 || ^9
+package: User interface
+
+# Information added by Drupal.org packaging script on 2021-02-25
+version: '1.0.0-alpha6'
+project: 'component_schema'
+datestamp: 1614282847

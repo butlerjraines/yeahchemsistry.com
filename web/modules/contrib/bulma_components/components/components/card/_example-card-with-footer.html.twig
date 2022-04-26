@@ -1,0 +1,32 @@
+{%
+  set card_content = {
+    title: {
+      title: 'My title',
+      size: 'is-3',
+      url: base_path ~ 'some/path',
+      heading_level: '2',
+    },
+    content: 'The body of the card',
+  }
+%}
+{%
+  set card_footer = {
+    items: [
+      {
+        url: base_path ~ 'item/view',
+        label: 'View',
+      },
+      {
+        url: base_path ~ 'item/edit',
+        label: 'Edit',
+      },
+    ],
+  }
+%}
+{% embed '@bulma_components/components/card/card.html.twig' with
+  {
+    card_content: card_content,
+    card_footer: card_footer
+  } only
+%}
+{% endembed %}

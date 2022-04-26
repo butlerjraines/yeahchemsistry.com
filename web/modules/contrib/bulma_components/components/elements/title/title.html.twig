@@ -1,0 +1,15 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_title' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{{ title_prefix }}
+{% if title %}
+<h{{ heading_level }}{{ attributes }}>
+  {% if url %}
+    <a href="{{ url }}">{{ title }}</a>
+  {% else %}
+    {{ title }}
+  {% endif %}
+</h{{ heading_level }}>
+{% endif %}
+{{ title_suffix }}

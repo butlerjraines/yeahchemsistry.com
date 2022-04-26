@@ -1,0 +1,25 @@
+attributes:
+  type: bulma_attributes
+tag:
+  type: bulma_tag
+color:
+  type: bulma_color
+  documentation_url: https://bulma.io/documentation/elements/notification/#colors
+is_light:
+  type: bulma_is_light
+  label: 'Is light'
+  description: 'Use the light version of a notification color'
+  documentation_url: https://bulma.io/documentation/elements/notification/#light-colors
+delete:
+  component_type: bulma_delete
+  mapping:
+    tag:
+      default: 'span'
+content:
+  label: 'Content'
+  description: 'Content to add to the notification'
+  nullable: true
+  type: text
+  preview: 'This is a notification'
+templates:
+  type: bulma_templates

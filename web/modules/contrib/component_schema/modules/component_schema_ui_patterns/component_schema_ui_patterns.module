@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Integrates Component Schema with the UI Patterns module.
+ */
+
+use Drupal\component_schema\ComponentSchema;
+use Drupal\component_schema_ui_patterns\Element\ComponentPattern;
+use Drupal\ui_patterns\UiPatterns;
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function component_schema_ui_patterns_element_info_alter(array &$info) {
+  $element_types = [
+    'pattern',
+    'pattern_preview',
+  ];
+  foreach ($element_types as $element_type) {
+    if (isset($info[$element_type])) {
+      $info[$element_type]['#pre_render'] = $info[$element_type]['#pre_render'] ?? [];
+      $info[$element_type]['#pre_render'][] = [ComponentPattern::class, 'expandVariables'];
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function component_schema_ui_patterns_module_implements_alter(&$implementations, $hook) {
+  // Move our implementation to the end so we can act after ui_patterns and
+  // ui_patterns_settings.
+  if ($hook == 'element_info_alter') {
+    $group = $implementations['component_schema_ui_patterns'];
+    unset($implementations['component_schema_ui_patterns']);
+    $implementations['component_schema_ui_patterns'] = $group;
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * Add top-level component variables to the pattern theme.
+ *
+ * @see \Drupal\component_schema_ui_patterns\Element\ComponentElement::expandVariables()
+ */
+function component_schema_ui_patterns_theme_registry_alter(&$theme_registry) {
+  foreach (UiPatterns::getManager()->getPatterns() as $pattern) {
+    $definition = $pattern->getPluginDefinition();
+    if (isset($theme_registry['pattern_' . $definition->id()])) {
+      if ($component = ComponentSchema::getComponentSchema($definition->id())) {
+        foreach (array_keys($component->getElements()) as $key) {
+          $theme_registry['pattern_' . $definition->id()]['variables'][$key] = NULL;
+        }
+      }
+      // @todo Remove flattened variables that will be replaced by the top-level
+      //   ones we've added.
+    }
+  }
+}

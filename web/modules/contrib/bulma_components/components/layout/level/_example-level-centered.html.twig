@@ -1,0 +1,40 @@
+{%
+  set items = [
+    {
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title.html.twig',
+          variables: _context
+        },
+      ]
+    },
+    {
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title.html.twig',
+          variables: _context
+        },
+      ]
+    },
+    {
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title.html.twig',
+        },
+      ]
+    },
+    {
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title.html.twig',
+        },
+      ]
+    }
+  ]
+%}
+{% embed '@bulma_components/layout/level/level.html.twig' with
+  {
+    items: items,
+  } only
+%}
+{% endembed %}

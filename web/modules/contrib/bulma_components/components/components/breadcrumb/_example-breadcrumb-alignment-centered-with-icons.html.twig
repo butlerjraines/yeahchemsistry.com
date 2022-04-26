@@ -1,0 +1,29 @@
+{%
+  set links = [
+    {
+      url: '/',
+      text: 'Home',
+      icon: {
+        icon_set: 'fas',
+        icon: 'fa-puzzle-piece',
+        text_color: 'has-text-danger'
+      }
+    },
+    {
+      url: '/test',
+      text: 'Test',
+      icon: {
+        icon_set: 'fas',
+        icon: 'fa-thumbs-up',
+       text_color: 'has-text-info'
+      }
+    },
+  ]
+%}
+{% embed '@bulma_components/components/breadcrumb/breadcrumb.html.twig' with
+  {
+    alignment: 'is-centered',
+    links: links
+  } only
+%}
+{% endembed %}

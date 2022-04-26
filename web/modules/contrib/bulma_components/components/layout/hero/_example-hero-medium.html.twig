@@ -1,0 +1,20 @@
+{% set hero_head %}
+{{ include('@bulma_components/components/tabs/_example-tabs-alignment-right.html.twig') }}
+{% endset %}
+{% set hero_body %}
+{{ include('@bulma_components/elements/title/_example-title.html.twig') }}
+{{ include('@bulma_components/elements/title/_example-subtitle.html.twig') }}
+{% endset %}
+{% set hero_foot %}
+{{ include('@bulma_components/components/tabs/_example-tabs.html.twig') }}
+{% endset %}
+{%
+  set hero = {
+    hero_head: hero_head,
+    hero_body: hero_body,
+    hero_foot: hero_foot,
+    color: 'is-success',
+    size: 'is-medium'
+  }
+%}
+{{ include('@bulma_components/layout/hero/hero.html.twig', hero) }}

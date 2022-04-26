@@ -1,0 +1,34 @@
+{%
+  set card_header = {
+    title: 'My header',
+    icon: {
+      url: base_path ~ 'some/path',
+      icon: {
+        color: 'is-info',
+        size: 'is-small',
+        icon_set: 'fa',
+        icon: 'fa-info-circle',
+      }
+    }
+  }
+%}
+{%
+  set card_content = {
+    title_prefix: '',
+    title: {
+      title: 'My title',
+      size: 'is-2',
+      url: base_path ~ 'some/path',
+      heading_level: '2',
+    },
+    title_suffix: '',
+    content: 'The body of the card',
+  }
+%}
+{% embed '@bulma_components/components/card/card.html.twig' with
+  {
+    card_header: card_header,
+    card_content: card_content
+  } only
+%}
+{% endembed %}

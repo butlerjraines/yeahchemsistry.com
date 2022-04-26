@@ -1,0 +1,11 @@
+{#
+  Macro to output error messages.
+#}
+{% macro errors(errors) %}
+  {# errors can be a boolean or an array. #}
+  {% if errors is iterable %}
+    {% for key, error in errors %}
+      {% trans %}Error at {{ key }}: {{ error }}{% endtrans %}
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

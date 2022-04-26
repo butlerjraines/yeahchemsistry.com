@@ -1,0 +1,16 @@
+{%
+  set box = {
+    content: 'My box content',
+    components: [
+      {
+        component_type: 'bulma_button',
+        variables: {
+          button_label: 'My button',
+          size: 'is-medium',
+          color: 'is-danger',
+        }
+      }
+    ]
+  }
+%}
+{{ include('@bulma_components/elements/box/box.html.twig', box) }}

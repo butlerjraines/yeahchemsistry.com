@@ -1,0 +1,16 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_button' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{% if attributes.hasAttribute('href') %}
+  {% set tag = 'a' %}
+{% endif %}
+<{{ tag }}{{ attributes }}>
+  {% if left_icon %}
+    {{ include('@bulma_components/elements/icon/icon.html.twig', left_icon, with_context = false) }}
+  {% endif %}
+  <span>{{ button_label }}</span>
+  {% if right_icon %}
+    {{ include('@bulma_components/elements/icon/icon.html.twig', right_icon, with_context = false) }}
+  {% endif %}
+</{{ tag }}>

@@ -1,0 +1,11 @@
+{%
+  set notification = {
+    content: 'My title',
+    color: 'is-info',
+    is_light: true,
+    delete: {
+      size: 'is-medium',
+    },
+  }
+%}
+{{ include('@bulma_components/elements/notification/notification.html.twig', notification) }}

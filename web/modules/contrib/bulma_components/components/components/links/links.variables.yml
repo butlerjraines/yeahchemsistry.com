@@ -1,0 +1,29 @@
+links:
+  type: sequence
+  label: 'Link items'
+  description: 'A set of links'
+  sequence:
+    label: 'Link'
+    description: 'An individual link'
+    type: mapping
+    mapping:
+      attributes:
+        type: bulma_attributes
+      is_active:
+        label: 'Is active'
+        description: 'Whether the item is active'
+        type: boolean
+        provided_value: is-active
+        takes_ui: false
+      url:
+        label: 'URL'
+        description: 'A URL to link to'
+        type: string
+        nullable: true
+      text:
+        label: 'Text'
+        description: 'Text of the item'
+        type: text
+        preview: 'My link'
+      icon:
+        component_type: bulma_icon

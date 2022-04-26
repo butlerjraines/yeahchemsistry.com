@@ -1,0 +1,16 @@
+{%
+  set blocks = [
+    {
+      content: 'First block content',
+    },
+    {
+      content: 'Second block content',
+    },
+    {
+      content: 'Third block content',
+    },
+  ]
+%}
+{% for block in blocks %}
+  {{ include('@bulma_components/elements/block/block.html.twig', block) }}
+{% endfor %}

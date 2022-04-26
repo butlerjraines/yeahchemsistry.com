@@ -1,0 +1,17 @@
+{%
+  set buttons = {
+    is_centered: true,
+    has_addons: true,
+    buttons: [
+      {
+        button_label: 'Button A',
+        is_rounded: true,
+      },
+      {
+        button_label: 'Button B',
+        is_rounded: true,
+      },
+    ]
+  }
+%}
+{{ include('@bulma_components/elements/buttons/buttons.html.twig', buttons) }}

@@ -1,0 +1,12 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'btable' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{{ if has_container is true }}
+<div class="table-container">
+{{ endif }}
+  <table{{ attributes }}>
+  </table>
+{{ if has_container is true }}
+</div>
+{{ endif }}

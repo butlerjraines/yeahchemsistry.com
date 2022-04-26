@@ -1,0 +1,8 @@
+{%
+  set image = {
+    ratio: is-square,
+    is_rounded: true,
+    src: base_path ~ extension_path ~ '/images/sample-square.png',
+  }
+%}
+{{ include('@bulma_components/elements/image/image.html.twig', image) }}

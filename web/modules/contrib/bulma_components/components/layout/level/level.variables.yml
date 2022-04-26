@@ -1,0 +1,51 @@
+attributes:
+  type: bulma_attributes
+level_left:
+  type: sequence
+  nullable: true
+  label: 'Level left'
+  description: 'A set of items for a left region on a level'
+  sequence:
+    label: 'Content'
+    description: 'A set of content items'
+    type: mapping
+    mapping:
+      content:
+        label: 'Content'
+        description: 'Content to add to the container'
+        nullable: true
+        type: text
+      templates:
+        type: bulma_templates
+level_right:
+  type: sequence
+  nullable: true
+  label: 'Level right'
+  description: 'A set of items for a right region on a level'
+  sequence:
+    description: 'Content'
+    type: mapping
+    mapping:
+      content:
+        label: 'Content'
+        description: 'Content to add to the container'
+        nullable: true
+        type: text
+      templates:
+        type: bulma_templates
+items:
+  type: sequence
+  nullable: true
+  label: 'Items'
+  description: 'A set of items on a level'
+  sequence:
+    label: 'Content'
+    type: mapping
+    mapping:
+      content:
+        label: 'Content'
+        description: 'Content to add to the container'
+        nullable: true
+        type: text
+      templates:
+        type: bulma_templates

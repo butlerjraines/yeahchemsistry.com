@@ -1,0 +1,35 @@
+{%
+  set columns = [
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/button/_example-button.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/button/_example-button-rounded.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/button/_example-button-large.html.twig'
+        },
+      ]
+    },
+  ]
+%}
+{% embed '@bulma_components/columns/columns/columns.html.twig' with
+  {
+    is_multiline: true,
+    columns: columns,
+  } only
+%}
+{% endembed %}

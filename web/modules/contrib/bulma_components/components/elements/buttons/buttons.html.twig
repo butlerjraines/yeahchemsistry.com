@@ -1,0 +1,9 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_buttons' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+<{{ tag }}{{ attributes }}>
+  {% for button in buttons %}
+    {{ include('@bulma_components/elements/button/button.html.twig', button, with_context = false) }}
+  {% endfor %}
+</{{ tag }}>

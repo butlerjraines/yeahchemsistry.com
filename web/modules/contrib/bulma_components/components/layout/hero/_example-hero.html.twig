@@ -1,0 +1,17 @@
+{% set hero_body %}
+{%
+  set title = {
+    title: 'My title',
+    size: 'is-2',
+  }
+%}
+{{ include('@bulma_components/elements/title/title.html.twig', title) }}
+{% endset %}
+
+{%
+  set hero = {
+    hero_body: hero_body,
+    color: 'is-info'
+  }
+%}
+{{ include('@bulma_components/layout/hero/hero.html.twig', hero) }}

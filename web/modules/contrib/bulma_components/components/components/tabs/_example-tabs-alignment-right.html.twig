@@ -1,0 +1,21 @@
+{%
+  set links = [
+    {
+      url: '/',
+      text: 'Home',
+    },
+    {
+      url: '/test',
+      text: 'Test',
+    },
+  ]
+%}
+{% embed '@bulma_components/components/tabs/tabs.html.twig' with
+  {
+    alignment: 'is-right',
+    size: 'is-large',
+    style: 'is-boxed',
+    links: links
+  } only
+%}
+{% endembed %}

@@ -1,0 +1,27 @@
+attributes:
+  type: bulma_attributes
+aria_label:
+  type: bulma_aria_label
+  default: 'Breadcrumbs'
+alignment:
+  type: bulma_alignment
+  description: 'Horizontal alignment of the breadcrumb container'
+  documentation_url: https://bulma.io/documentation/components/breadcrumb/#alignment
+separator:
+  label: 'Separator'
+  description: 'The chracter that separates breadcrumb items'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    has-arrow-separator: arrow
+    has-bullet-separator: bullet
+    has-dot-separator: dot
+    has-succeeds-separator: succeeds
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/components/breadcrumb/#alternative-separators
+size:
+  type: bulma_size
+  description: 'Choose between several alternative sizes for the breadcrumbs'
+  documentation_url: https://bulma.io/documentation/components/breadcrumb/#sizes
+links:
+  component_type: bulma_links

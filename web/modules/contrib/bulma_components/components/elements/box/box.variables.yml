@@ -1,0 +1,14 @@
+tag:
+  type: bulma_tag
+attributes:
+  type: bulma_attributes
+content:
+  label: 'Content'
+  description: 'Content to add to the box'
+  nullable: true
+  type: text
+  preview: 'This is a sample bit of text inside a box.'
+templates:
+  type: bulma_templates
+components:
+  type: bulma_components

@@ -1,0 +1,64 @@
+tag:
+  type: bulma_tag
+  default: 'article'
+attributes:
+  type: bulma_attributes
+card_header:
+  label: 'Header'
+  description: 'The header of a card'
+  nullable: true
+  type: mapping
+  mapping:
+    title:
+      label: 'Title'
+      description: 'Bold text, by default left-aligned'
+      type: string
+    icon:
+      label: 'Icon'
+      description: 'A placeholder for an icon'
+      nullable: true
+      type: mapping
+      mapping:
+        attributes:
+          type: bulma_attributes
+        url:
+          label: 'URL'
+          description: 'A url that the icon links to'
+          nullable: true
+          type: string
+        icon:
+          component_type: bulma_icon
+card_image:
+  component_type: bulma_image
+  description: 'A full-width image in a responsive container'
+card_content:
+  label: 'Content region'
+  description: 'The content of the card'
+  type: mapping
+  mapping:
+    attributes:
+      type: bulma_attributes
+    title:
+      component_type: bulma_title
+    content:
+      label: 'Content'
+      description: 'The body content of the card'
+      type: text
+card_footer:
+  label: 'Footer items'
+  description: 'Items in the card footer'
+  type: sequence
+  nullable: true
+  sequence:
+    label: 'Item'
+    description: 'An individual footer item'
+    type: mapping
+    mapping:
+      url:
+        label: 'URL'
+        description: 'A URL to link to'
+        type: string
+      label:
+        label: 'Label'
+        description: 'Label of the item'
+        type: string

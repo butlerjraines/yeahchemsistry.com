@@ -1,0 +1,16 @@
+{%
+  set buttons = {
+    is_centered: true,
+    buttons: [
+      {
+        button_label: 'Button A',
+        color: 'is-info',
+      },
+      {
+        button_label: 'Button B',
+        color: 'is-danger',
+      },
+    ]
+  }
+%}
+{{ include('@bulma_components/elements/buttons/buttons.html.twig', buttons) }}

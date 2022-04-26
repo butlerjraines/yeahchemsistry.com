@@ -1,0 +1,14 @@
+name: Component Schema UI Patterns
+type: module
+description: Derives a UI pattern for each available component.
+core_version_requirement: ^8.8 || ^9
+package: User interface
+dependencies:
+  - component_schema:component_schema
+  - ui_patterns:ui_patterns
+  - ui_patterns_settings:ui_patterns_settings
+
+# Information added by Drupal.org packaging script on 2021-02-25
+version: '1.0.0-alpha6'
+project: 'component_schema'
+datestamp: 1614282847

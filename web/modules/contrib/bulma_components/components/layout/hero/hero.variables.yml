@@ -1,0 +1,27 @@
+attributes:
+  type: bulma_attributes
+size:
+  type: bulma_size
+  options:
+    is-small: 'small'
+    is-medium: 'medium'
+    is-large: 'large'
+    is-halfheight: 'half height'
+    is-fullheight: 'full height'
+    is-fullheight-with-navbar: 'full height with navbar'
+  documentation_url: https://bulma.io/documentation/layout/hero/#sizes
+color:
+  type: bulma_color
+  documentation_url: https://bulma.io/documentation/layout/hero/#colors
+hero_head:
+  label: 'Head'
+  description: 'The head content of the hero, always at the top'
+  type: text
+hero_body:
+  label: 'Body'
+  description: 'The body content of the hero, always vertically centered'
+  type: text
+hero_foot:
+  label: 'Foot'
+  description: 'The foot content of the hero, always at the bottom'
+  type: text

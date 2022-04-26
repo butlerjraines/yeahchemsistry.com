@@ -1,0 +1,21 @@
+{%
+  set columns = [
+    {
+      attributes: create_attribute().addClass('is-narrow'),
+      templates: [
+        {
+          template: '@bulma_components/elements/icon/_example-icon.html.twig',
+        },
+        {
+          template: '@bulma_components/elements/icon/_example-icon-large.html.twig',
+        },
+      ]
+    },
+  ]
+%}
+{% embed '@bulma_components/columns/columns/columns.html.twig' with
+  {
+    columns: columns,
+  } only
+%}
+{% endembed %}

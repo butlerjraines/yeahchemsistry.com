@@ -1,0 +1,27 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_hero' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+<section{{ attributes }}>
+  {% block hero_head %}
+  {% if hero_head %}
+  <div class="hero-head">
+    {{hero_head}}
+  </div>
+  {% endif %}
+  {% endblock hero_head %}
+  {% block hero_body %}
+  {% if hero_body %}
+  <div class="hero-body">
+    {{hero_body}}
+  </div>
+  {% endif %}
+  {% endblock hero_body %}
+  {% block hero_foot %}
+  {% if hero_foot %}
+  <div class="hero-foot">
+    {{hero_foot}}
+  </div>
+  {% endif %}
+  {% endblock hero_foot %}
+</section>

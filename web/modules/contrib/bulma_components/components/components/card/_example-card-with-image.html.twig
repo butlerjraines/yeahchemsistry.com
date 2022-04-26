@@ -1,0 +1,18 @@
+{%
+  set card = {
+    card_content: {
+      title_prefix: '',
+      title: {
+        title: 'My title',
+        url: base_path ~ 'some/path',
+        heading_level: '2',
+      },
+      title_suffix: '',
+      content: 'The body of the card',
+    },
+    card_image: {
+      src: base_path ~ extension_path ~ '/images/sample.png',
+    },
+  }
+%}
+{{ include('@bulma_components/components/card/card.html.twig', card) }}

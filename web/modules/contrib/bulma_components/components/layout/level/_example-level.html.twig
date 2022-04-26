@@ -1,0 +1,27 @@
+{%
+  set level_left = [
+    {
+      content: 'Left item 1',
+    },
+    {
+      content: 'Left item 2',
+    },
+  ]
+%}
+{%
+  set level_right = [
+    {
+      content: 'Right item 1',
+    },
+    {
+      content: 'Right item 2',
+    },
+  ]
+%}
+{% embed '@bulma_components/layout/level/level.html.twig' with
+  {
+    level_left: level_left,
+    level_right: level_right
+  } only
+%}
+{% endembed %}

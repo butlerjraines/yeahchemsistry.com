@@ -1,0 +1,104 @@
+attributes:
+  type: bulma_attributes
+tag:
+  type: bulma_tag
+  default: 'button'
+url:
+  label: 'URL'
+  description: 'Path or URL the button links to'
+  nullable: true
+  type: string_attribute_provider
+  provides_attribute: true
+  provided_name: 'href'
+  ui_type: field
+size:
+  type: bulma_size
+  documentation_url: https://bulma.io/documentation/elements/button/#sizes
+  preview: is-medium
+color:
+  type: bulma_color
+  documentation_url: https://bulma.io/documentation/elements/button/#colors
+  preview: is-danger
+button_label:
+  label: 'Label'
+  description: 'The text to be used for the button'
+  nullable: true
+  type: label
+  preview: 'My button'
+state:
+  label: 'State'
+  description: 'The state of the button'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-hovered: hovered
+    is-focused: focused
+    is-active: active
+    is-loading: loading
+    is-static: static
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/elements/button/#states
+is_light:
+  type: bulma_is_light
+  label: 'Is light'
+  description: 'Use the light version of a button color'
+  documentation_url: https://bulma.io/documentation/elements/button/#colors
+is_selected:
+  label: 'Is selected'
+  description: 'Display a button above any siblings'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-selected
+  documentation_url: https://bulma.io/documentation/elements/button/#list-of-buttons
+is_rounded:
+  type: bulma_is_rounded
+  description: 'Make a button rounded'
+  documentation_url: https://bulma.io/documentation/elements/button/#styles
+  preview: true
+is_loading:
+  label: 'Is loading'
+  description: 'Turn a button into its loading version'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-loading
+  documentation_url: https://bulma.io/documentation/elements/button/#states
+is_outlined:
+  label: 'Is outlined'
+  description: 'Outline a button'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-outlined
+  documentation_url: https://bulma.io/documentation/elements/button/#states
+disabled:
+  label: 'Disabled'
+  description: 'Disable the button, preventing the user from interacting with it'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_attribute: true
+  provided_name: 'disabled'
+  provided_value: true
+  documentation_url: https://bulma.io/documentation/elements/button/#states
+is_fullwidth:
+  type: bulma_is_fullwidth
+  description: 'Make a buttom take the full width available'
+  documentation_url: https://bulma.io/documentation/elements/button/#displays
+is_inverted:
+  label: 'Is inverted'
+  description: 'Make text color becomes the background color, and vice-versa'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-inverted
+  documentation_url: https://bulma.io/documentation/elements/button/#styles
+left_icon:
+  component_type: 'bulma_icon'
+  preview:
+    icon_set: 'fas'
+    icon: 'fa-book-open'
+    text_color: 'has-text-info'
+    size: 'is-medium'
+right_icon:
+  component_type: 'bulma_icon'

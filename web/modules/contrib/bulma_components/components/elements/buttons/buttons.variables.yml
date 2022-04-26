@@ -1,0 +1,23 @@
+attributes:
+  type: bulma_attributes
+tag:
+  type: bulma_tag
+size:
+  type: bulma_size
+  options:
+    are-small: small
+    are-medium: medium
+    are-large: large
+  documentation_url: https://bulma.io/documentation/elements/button/#sizes
+has_addons:
+  type: bulma_has_addons
+  documentation_url: https://bulma.io/documentation/elements/button/#list-of-buttons
+alignment:
+  type: bulma_alignment
+  documentation_url: https://bulma.io/documentation/elements/button/#list-of-buttons
+buttons:
+  label: 'Buttons'
+  description: 'A set of button items'
+  type: sequence
+  sequence:
+    component_type: bulma_button

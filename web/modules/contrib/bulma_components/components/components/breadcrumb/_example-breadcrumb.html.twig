@@ -1,0 +1,18 @@
+{%
+  set links = [
+    {
+      url: '/',
+      text: 'Home',
+    },
+    {
+      url: '/test',
+      text: 'Test',
+    },
+  ]
+%}
+{% embed '@bulma_components/components/breadcrumb/breadcrumb.html.twig' with
+  {
+    links: links
+  } only
+%}
+{% endembed %}

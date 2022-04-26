@@ -1,0 +1,15 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bulma_box' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+<{{ tag }}{{ attributes }}>
+  {% block content %}
+  {{ content }}
+  {% for template in templates %}
+    {{ template|raw }}
+  {% endfor %}
+  {% for component in components %}
+    {{ component|raw }}
+  {% endfor %}
+  {% endblock content %}
+</{{ tag }}>

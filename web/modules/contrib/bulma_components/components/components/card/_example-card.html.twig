@@ -1,0 +1,16 @@
+{%
+  set card_content = {
+    title: {
+      title: 'My title',
+      url: base_path ~ 'some/path',
+      heading_level: '2',
+    },
+    content: 'The body of the card',
+  }
+%}
+{% embed '@bulma_components/components/card/card.html.twig' with
+  {
+    card_content: card_content
+  } only
+%}
+{% endembed %}

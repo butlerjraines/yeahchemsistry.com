@@ -1,0 +1,186 @@
+# Component versions of base types provided by Drupal core.
+
+# Definitions are the same as the ones in Drupal core except for our
+# definition_class.
+
+# Read https://www.drupal.org/node/1905070 for more details about configuration
+# schema, types and type resolution.
+
+# Undefined type used by the system to assign to elements at any level where
+# configuration schema is not defined. Using explicitly has the same effect as
+# not defining schema, so there is no point in doing that.
+undefined:
+  label: 'Undefined'
+  class: '\Drupal\Core\Config\Schema\Undefined'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableDataDefinition'
+  takes_ui: false
+
+# Explicit type to use when no data typing is possible. Instead of using this
+# type, we strongly suggest you use configuration structures that can be
+# described with other structural elements of schema, and describe your schema
+# with those elements.
+ignore:
+  label: 'Ignore'
+  class: '\Drupal\Core\Config\Schema\Ignore'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableDataDefinition'
+  takes_ui: false
+
+# @todo: replace all types with component versions.
+
+# Basic scalar data types from typed data.
+
+# Extends the boolean type.
+boolean:
+  label: 'Boolean'
+  class: '\Drupal\component_schema\Component\Schema\ComponentBooleanData'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableDataDefinition'
+  takes_ui: true
+  ui_type: field
+
+# Extends the string type.
+string:
+  label: 'String'
+  class: '\Drupal\component_schema\Component\Schema\ComponentStringData'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableDataDefinition'
+  takes_ui: true
+  ui_type: field
+
+# Extends the boolean type to provide a class or attribute.
+boolean_attribute_provider:
+  label: 'Boolean attribute provider'
+  class: '\Drupal\component_schema\Component\Schema\ComponentBooleanDataAttributeProvider'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableAttributeProviderDataDefinition'
+  attribute_target: 'attributes'
+  takes_ui: true
+  ui_type: setting
+
+# Extends the string type to provide a class or attribute.
+string_attribute_provider:
+  label: 'String attribute provider'
+  class: '\Drupal\component_schema\Component\Schema\ComponentStringDataAttributeProvider'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableAttributeProviderDataDefinition'
+  attribute_target: 'attributes'
+  takes_ui: true
+  ui_type: setting
+
+# Supports \Drupal\Core\Template\Attribute values.
+attribute:
+  label: 'Attribute'
+  class: '\Drupal\component_schema\Component\Schema\ComponentAttribute'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableDataDefinition'
+  takes_ui: false
+
+# Container data types for lists with known and unknown keys.
+
+# Extends the core mapping type.
+mapping:
+  label: 'Component mapping'
+  class: '\Drupal\component_schema\Component\Schema\ComponentMapping'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableMapDataDefinition'
+  takes_ui: true
+
+# Extends the sequence type.
+sequence:
+  label: 'Component sequence'
+  class: '\Drupal\component_schema\Component\Schema\ComponentSequence'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableSequenceDataDefinition'
+  takes_ui: true
+
+# Simple extended data types:
+
+# Human readable string that must be plain text and editable with a text field.
+label:
+  type: string
+  label: 'Label'
+  translatable: true
+
+# String containing plural variants, separated by EXT.
+plural_label:
+  type: label
+  label: 'Plural variants'
+
+# Internal Drupal path
+path:
+  type: string
+  label: 'Path'
+
+# Human readable string that can contain multiple lines of text or HTML.
+text:
+  type: string
+  label: 'Text'
+  translatable: true
+
+# A UUID.
+uuid:
+  type: string
+  label: 'UUID'
+  constraints:
+    Uuid: {}
+
+# PHP Date format string that is translatable.
+date_format:
+  type: string
+  label: 'Date format'
+  translatable: true
+  translation context: 'PHP date format'
+
+# HTML color value.
+color_hex:
+  type: string
+  label: 'Color'
+  ui_type: setting
+
+# An Email address.
+email:
+  type: string
+  label: 'Email'
+  constraints:
+    Email: {}
+
+# HTML tag.
+tag:
+  type: string
+  label: 'Tag'
+  takes_ui: false
+
+# Extended types
+
+# Extends the mapping type.
+type_mapping:
+  label: 'Component type mapping'
+  class: '\Drupal\component_schema\Component\Schema\ComponentMapping'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentDataDefinition'
+  attribute_target: 'attributes'
+  takes_ui: true;
+  ui_type: field;
+
+# Extends the mapping type to support components.
+component:
+  label: 'Component'
+  class: '\Drupal\component_schema\Component\Schema\ComponentComponent'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableMapDataDefinition'
+  takes_ui: true
+  mapping:
+    component_type:
+      label: 'The component type to render'
+      type: string
+    variables:
+      label: 'The variables to pass to the component'
+      type: ignore
+
+# Extends the mapping type to support templates.
+template:
+  label: 'Component template'
+  class: '\Drupal\component_schema\Component\Schema\ComponentTemplate'
+  definition_class: '\Drupal\component_schema\Component\Schema\ComponentVariableMapDataDefinition'
+  takes_ui: false
+  mapping:
+    template:
+      label: 'The template to render'
+      type: string
+      documentation_url: https://twig.symfony.com/doc/2.x/functions/include.html
+    variables:
+      label: 'The variables to pass to the template'
+      nullable: true
+      type: ignore
+      documentation_url: https://twig.symfony.com/doc/2.x/functions/include.html

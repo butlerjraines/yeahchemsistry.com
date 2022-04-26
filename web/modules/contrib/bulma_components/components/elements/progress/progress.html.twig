@@ -1,0 +1,12 @@
+{% import "@component_schema/_helpers.html.twig" as helpers %}
+{% set component_type = 'bprogress' %}
+{% set errors = process_component() %}
+{{- helpers.errors(errors) -}}
+{% block label %}
+{% if label %}
+<label for="{{ id }}">{{ label }}</label>
+{% endif %}
+{% endblock label %}
+{% block progress %}
+<progress id="{{ id }}"{{ attributes|without('id') }}>{{ value }}</progress>
+{% endblock progress %}

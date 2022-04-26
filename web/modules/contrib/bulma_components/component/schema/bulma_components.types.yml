@@ -1,0 +1,369 @@
+bulma_alignment:
+  label: 'Alignment'
+  description: 'Horizontal alignment of the container'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-centered: centered
+    is-right: right
+  provides_class: true
+bulma_aria_label:
+  label: 'ARIA label'
+  description: 'Text to be used for an aria-label attribute'
+  nullable: true
+  type: string
+  provides_attribute: true
+  provided_name: 'aria-label'
+  documentation_url: https://www.w3.org/TR/WCAG20-TECHS/ARIA6.html
+bulma_attributes:
+  label: 'Attributes'
+  description: 'An array of HTML attributes intended to be added to a container tag of this template'
+  nullable: true
+  type: attribute
+  documentation_url: https://www.drupal.org/docs/8/theming-drupal-8/using-attributes-in-templates
+bulma_color:
+  label: 'Color'
+  description: 'Set to one of a large range of colors'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-white: white
+    is-black: black
+    is-light: light
+    is-dark: dark
+    is-primary: primary
+    is-info: info
+    is-link: link
+    is-success: success
+    is-warning: warning
+    is-danger: danger
+    is-black-bis: black-bis
+    is-black-ter: black-ter
+    is-grey-darker: grey-darker
+    is-grey-dark: grey-dark
+    is-grey: grey
+    is-grey-light: grey-light
+    is-grey-lighter: grey-lighter
+    is-white-ter: white-ter
+    is-white-bis: white-bis
+    is-primary-light: primary-light
+    is-link-light: link-light
+    is-info-light: info-light
+    is-success-light: success-light
+    is-warning-light: warning-light
+    is-danger-light: danger-light
+    is-primary-dark: primary-dark
+    is-link-dark: link-dark
+    is-info-dark: info-dark
+    is-success-dark: success-dark
+    is-warning-dark: warning-dark
+    is-danger-dark: danger-dark
+  ui_classes:
+    is-white: has-background-white
+    is-black: has-background-black
+    is-light: has-background-light
+    is-dark: has-background-dark
+    is-primary: has-background-primary
+    is-info: has-background-info
+    is-link: has-background-link
+    is-success: has-background-success
+    is-warning: has-background-warning
+    is-danger: has-background-danger
+    is-black-bis: has-background-black-bis
+    is-black-ter: has-background-black-ter
+    is-grey-darker: has-background-grey-darker
+    is-grey-dark: has-background-grey-dark
+    is-grey: has-background-grey
+    is-grey-light: has-background-grey-light
+    is-grey-lighter: has-background-grey-lighter
+    is-white-ter: has-background-white-ter
+    is-white-bis: has-background-white-bis
+    is-primary-light: has-background-primary-light
+    is-link-light: has-background-link-light
+    is-info-light: has-background-info-light
+    is-success-light: has-background-success-light
+    is-warning-light: has-background-warning-light
+    is-danger-light: has-background-danger-light
+    is-primary-dark: has-background-primary-dark
+    is-link-dark: has-background-link-dark
+    is-info-dark: has-background-info-dark
+    is-success-dark: has-background-success-dark
+    is-warning-dark: has-background-warning-dark
+    is-danger-dark: has-background-danger-dark
+  provides_class: true
+bulma_column:
+  label: 'Column'
+  description: 'An individual column'
+  type: mapping
+  mapping:
+    attributes:
+      type: bulma_attributes
+    size:
+      label: 'Size'
+      description: 'A size attribute'
+      nullable: true
+      type: string_attribute_provider
+      options:
+        is-three-quarters: 'three-quarters'
+        is-two-thirds: 'two-thirds'
+        is-half: 'half'
+        is-one-third: 'one-third'
+        is-one-quarter: 'one-quarter'
+        is-full: 'full'
+        is-four-fifths: 'four-fifths'
+        is-three-fifths: 'three-fifths'
+        is-two-fifths: 'two-fifths'
+        is-one-fifth: 'one-fifth'
+        is-1: '1'
+        is-2: '2'
+        is-3: '3'
+        is-4: '4'
+        is-5: '5'
+        is-6: '6'
+        is-7: '7'
+        is-8: '8'
+        is-9: '9'
+        is-10: '10'
+        is-11: '11'
+        is-12: '12'
+      provides_class: true
+      supports_breakpoints: true
+      documentation_url: https://bulma.io/documentation/columns/sizes
+    offset:
+      label: 'Offset'
+      description: 'A horizontal offset'
+      nullable: true
+      type: string_attribute_provider
+      options:
+        is-offset-three-quarters: 'three-quarters'
+        is-offset-two-thirds: 'two-thirds'
+        is-offset-half: 'half'
+        is-offset-one-third: 'one-third'
+        is-offset-one-quarter: 'one-quarter'
+        is-offset-full: 'full'
+        is-offset-four-fifths: 'four-fifths'
+        is-offset-three-fifths: 'three-fifths'
+        is-offset-two-fifths: 'two-fifths'
+        is-offset-one-fifth: 'one-fifth'
+        is-offset-1: '1'
+        is-offset-2: '2'
+        is-offset-3: '3'
+        is-offset-4: '4'
+        is-offset-5: '5'
+        is-offset-6: '6'
+        is-offset-7: '7'
+        is-offset-8: '8'
+        is-offset-9: '9'
+        is-offset-10: '10'
+        is-offset-11: '11'
+        is-offset-12: '12'
+      provides_class: true
+      documentation_url: https://bulma.io/documentation/columns/sizes/#offset
+    content:
+      label: 'Content'
+      description: 'Content to add to the column'
+      nullable: true
+      type: text
+      preview: '<p>This is some sample content added to a column.</p>'
+    templates:
+      type: bulma_templates
+bulma_columns_is_multiline:
+  label: 'Is multiline'
+  description: 'Whether the columns take more than one row'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-multiline
+  documentation_url: https://bulma.io/documentation/columns/options/#multiline
+bulma_columns_is_centered:
+  label: 'Is centered'
+  description: 'Whether the columns are horizontally centered'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-centered
+  documentation_url: https://bulma.io/documentation/columns/options/#centering-columns
+bulma_columns_is_vcentered:
+  label: 'Is vcentered'
+  description: 'Whether the columns are vertically centered'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-vcentered
+  documentation_url: https://bulma.io/documentation/columns/options/#centering-columns
+bulma_columns_is_mobile:
+  label: 'Is mobile'
+  description: 'Whether the columns appear on mobile'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-mobile
+  documentation_url: https://bulma.io/documentation/columns/responsiveness
+bulma_components:
+  label: 'Components'
+  description: 'Components to be included'
+  nullable: true
+  type: sequence
+  takes_ui: false
+  sequence:
+    description: 'Component'
+    type: component
+bulma_has_addons:
+  label: 'Has addons'
+  description: 'Attach controls together'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: has-addons
+bulma_is_fullwidth:
+  label: 'Is full width'
+  description: 'Make an element take the full width available'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-fullwidth
+bulma_is_light:
+  label: 'Is light'
+  description: 'Use the light version of the element'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-light
+bulma_is_rounded:
+  label: 'Is rounded'
+  description: 'Make an element rounded'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-rounded
+bulma_size:
+  label: 'Size'
+  description: 'A size property'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-small: 'small'
+    is-medium: 'medium'
+    is-large: 'large'
+  provides_class: true
+bulma_tag:
+  label: 'Tag'
+  description: 'The HTML tag to use for the wrapper element'
+  nullable: true
+  type: tag
+  default: 'div'
+bulma_templates:
+  label: 'Templates'
+  description: 'Templates to be included'
+  nullable: true
+  type: sequence
+  takes_ui: false
+  sequence:
+    description: 'Template'
+    type: template
+bulma_text_size:
+  label: 'Text size'
+  description: 'There are 7 text sizes to choose from'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-size-1: '1'
+    is-size-2: '2'
+    is-size-3: '3'
+    is-size-4: '4'
+    is-size-5: '5'
+    is-size-6: '6'
+    is-size-7: '7'
+  provides_class: true
+  supports_breakpoints: true
+  documentation_url: https://bulma.io/documentation/helpers/typography-helpers/#size
+bulma_text_color:
+  label: 'Text color'
+  description: 'You can set any text element to one of a range of colors'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    has-text-white: white
+    has-text-black: black
+    has-text-light: light
+    has-text-dark: dark
+    has-text-primary: primary
+    has-text-info: info
+    has-text-link: link
+    has-text-success: success
+    has-text-warning: warning
+    has-text-danger: danger
+    has-text-black-bis: black-bis
+    has-text-black-ter: black-ter
+    has-text-grey-darker: grey-darker
+    has-text-grey-dark: grey-dark
+    has-text-grey: grey
+    has-text-grey-light: grey-light
+    has-text-grey-lighter: grey-lighter
+    has-text-white-ter: white-ter
+    has-text-white-bis: white-bis
+    has-text-primary-light: primary-light
+    has-text-link-light: link-light
+    has-text-info-light: info-light
+    has-text-success-light: success-light
+    has-text-warning-light: warning-light
+    has-text-danger-light: danger-light
+    has-text-primary-dark: primary-dark
+    has-text-link-dark: link-dark
+    has-text-info-dark: info-dark
+    has-text-success-dark: success-dark
+    has-text-warning-dark: warning-dark
+    has-text-danger-dark: danger-dark
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/helpers/typography-helpers/#colors
+bulma_text_alignment:
+  label: 'Text alignment'
+  description: 'You can align the text with the use of one of 4 alignment helpers'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    has-text-centered: 'centered'
+    has-text-justified: 'justified'
+    has-text-left: 'left aligned'
+    has-text-right: 'right aligned'
+  provides_class: true
+  supports_breakpoints: true
+  documentation_url: https://bulma.io/documentation/helpers/typography-helpers/#alignment
+bulma_text_transformation:
+  label: 'Text transformation'
+  description: 'You can transform the text with the use of one of 4 text transformation helpers'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-capitalized: 'capitalized'
+    is-lowercase: 'lower case'
+    is-uppercase: 'upper case'
+    is-italic: 'italic'
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/helpers/typography-helpers/#text-transformation
+bulma_text_weight:
+  label: 'Text weight'
+  description: 'You can transform the text weight with the use of one of 5 text weight helpers'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    has-text-weight-light: 'light'
+    has-text-weight-normal: 'normal'
+    has-text-weight-medium: 'medium'
+    has-text-weight-semibold: 'semi-bold'
+    has-text-weight-bold: 'bold'
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/helpers/typography-helpers/#text-weight
+bulma_font_family:
+  label: 'Font family'
+  description: 'You can change the font family with the use of one of 5 font family helpers'
+  nullable: true
+  type: string_attribute_provider
+  provides_class: true
+  options:
+    is-family-sans-serif: 'sans-serif'
+    is-family-monospace: 'monospace'
+    is-family-primary: 'primary'
+    is-family-secondary: 'secondary'
+    is-family-code: 'code'
+  documentation_url: https://bulma.io/documentation/helpers/typography-helpers/#font-family

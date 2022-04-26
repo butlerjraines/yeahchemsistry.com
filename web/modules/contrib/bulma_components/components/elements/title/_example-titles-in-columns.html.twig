@@ -1,0 +1,65 @@
+{%
+  set columns = [
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-subtitle.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title.html.twig',
+        },
+        {
+          template: '@bulma_components/elements/title/_example-subtitle.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title-with-link.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-subtitle-with-link.html.twig'
+        },
+      ]
+    },
+    {
+      size: 'is-one-quarter',
+      templates: [
+        {
+          template: '@bulma_components/elements/title/_example-title-with-link.html.twig'
+        },
+        {
+          template: '@bulma_components/elements/title/_example-subtitle-with-link.html.twig'
+        },
+      ]
+    },
+  ]
+%}
+{% embed '@bulma_components/columns/columns/columns.html.twig' with
+  {
+    is_multiline: true,
+    columns: columns,
+  } only
+%}
+{% endembed %}

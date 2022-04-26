@@ -1,0 +1,27 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ * Change Labels on Drupal 8 Login form.
+ * @param $form
+ * @param FormStateInterface $form_state
+ * @param $form_id
+ */
+
+function form_alter_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+//drupal_set_message($form_id);
+
+
+\Drupal::messenger()->addMessage(print_r($form_id, TRUE));
+
+if ($form_id == 'user_login_form') {
+        //- change label for username input
+        $form['name']['#title'] = t('Your New UserName Label');
+        //- change label for password input
+        $form['pass']['#title'] = t('Your New Password Label');
+    }
+
+} 

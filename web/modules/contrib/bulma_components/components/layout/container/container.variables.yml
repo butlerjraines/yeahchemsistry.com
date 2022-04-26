@@ -1,0 +1,30 @@
+tag:
+  type: bulma_tag
+attributes:
+  type: bulma_attributes
+is_fluid:
+  label: 'Is fluid'
+  description: 'Give the container a 32px gap on either side, on any viewport size'
+  nullable: true
+  type: boolean_attribute_provider
+  provides_class: true
+  provided_value: is-fluid
+  documentation_url: https://bulma.io/documentation/layout/container/#fluid-container
+breakpoint:
+  label: 'Breakpoint'
+  description: 'Have a fullwidth container until a specific breakpoint'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-widescreen: widescreen
+    is-fullhd: fullhd
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/layout/container/#breakpoint-containers
+content:
+  label: 'Content'
+  description: 'Content to add to the container'
+  nullable: true
+  type: text
+  preview: 'This is sample content in a container.'
+templates:
+  type: bulma_templates

@@ -1,0 +1,28 @@
+tag:
+  type: bulma_tag
+attributes:
+  type: bulma_attributes
+alignment:
+  type: bulma_alignment
+  description: 'Horizontal alignment of the tabs container'
+  documentation_url: https://bulma.io/documentation/components/tabs/#alignment
+size:
+  type: bulma_size
+  description: 'Choose between several alternative sizes for the tabs'
+  documentation_url: https://bulma.io/documentation/components/tabs/#sizes
+is_fullwidth:
+  type: bulma_is_fullwidth
+  description: 'Make tabs take the full width available'
+  documentation_url: https://bulma.io/documentation/components/tabs/#styles
+style:
+  label: 'Style'
+  description: 'Choose the styling of the tabs'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-boxed: 'boxed'
+    is-toggle: 'toggle'
+    'is-toggle is-toggle-rounded': 'toggle rounded'
+  provides_class: true
+links:
+  component_type: bulma_links

@@ -1,0 +1,72 @@
+attributes:
+  type: bulma_attributes
+img_attributes:
+  type: bulma_attributes
+  label: 'Image attributes'
+src:
+  label: 'URL (src)'
+  description: 'URL to the image file'
+  type: string_attribute_provider
+  provides_attribute: true
+  provided_name: 'src'
+  attribute_target: 'img_attributes'
+  ui_type: 'field'
+alt:
+  label: 'Alt parameter'
+  description: 'Short description of the image used by screen readers and displayed when the image is not loaded'
+  type: string_attribute_provider
+  provides_attribute: true
+  provided_name: 'src'
+  attribute_target: 'img_attributes'
+  ui_type: 'field'
+dimensions:
+  label: 'Fixed square dimensions'
+  description: 'There are 7 dimensions to choose from, useful for avatars'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-16x16: '16x16px'
+    is-24x24: '24x24px'
+    is-32x32: '32x32px'
+    is-48x48: '48x48px'
+    is-64x64: '64x64px'
+    is-96x96: '96x96px'
+    is-128x128: '128x128px'
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/elements/image/#fixed-square-images
+ratio:
+  label: 'Ratio'
+  description: 'Responsive, full-width images with ratios'
+  nullable: true
+  type: string_attribute_provider
+  options:
+    is-square: 'Square (or 1 by 1)'
+    is-1by1: '1 by 1'
+    is-5by4: '5 by 4'
+    is-4by3: '4 by 3'
+    is-3by2: '3 by 2'
+    is-5by3: '5 by 3'
+    is-16by9: '16 by 9'
+    is-2by1: '2 by 1'
+    is-3by1: '3 by 1'
+    is-4by5: '4 by 5'
+    is-3by4: '3 by 4'
+    is-2by3: '2 by 3'
+    is-3by5: '3 by 5'
+    is-9by16: '9 by 16'
+    is-1by2: '1 by 2'
+    is-1by3: '1 by 3'
+  provides_class: true
+  documentation_url: https://bulma.io/documentation/elements/image/#fixed-square-images
+is_rounded:
+  type: bulma_is_rounded
+  description: 'Make an image rounded'
+  documentation_url: https://bulma.io/documentation/elements/image/#rounded-images
+  attribute_target: 'img_attributes'
+caption:
+  type: text
+  label: 'Caption'
+  description: 'A caption to be displayed with the photo'
+caption_attributes:
+  type: bulma_attributes
+  label: 'Caption attributes'
