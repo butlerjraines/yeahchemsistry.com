@@ -28,7 +28,7 @@
         "drupal/core-recommended": "^9.3",
         "drupal/entity_update": "^2.0@RC",
         "drupal/fontawesome": "^2.17",
-        "drupal/google_analytics": "^3.0",
+        "drupal/google_analytics": "^4.0",
         "drupal/google_tag": "^1.5",
         "drupal/image_url_formatter": "^1.0",
         "drupal/inline_registration": "^1.0@alpha",
