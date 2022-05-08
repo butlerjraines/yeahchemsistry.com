@@ -114,7 +114,8 @@ class LinkExtractorBatch {
       $storage = $this->entityTypeManager->getStorage($entityType->id());
       foreach ($ids as $id) {
         $entity = $storage->load($id);
-        if ($entity instanceof FieldableEntityInterface){
+        if ($entity instanceof FieldableEntityInterface) {
+          // Process the entity links.
           $links = $this->extractor->extractFromEntity($entity);
           $this->extractor->saveLinkMultiple($links);
           $this->extractor->updateEntityExtractIndex($entity);
